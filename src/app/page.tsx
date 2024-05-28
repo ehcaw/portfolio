@@ -1,9 +1,10 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import { MacbookScroll } from "./components/MacbookScroll";
 import { FloatingNav, navItems } from "./components/Navbar";
-import { WavyBackground } from "./components/Wave";
-import { TypewriterEffect } from "./components/Typewriter";
+import { ProjectCards } from "./components/HoverCard";
+import { PhotoSlide } from "./components/PhotoSlide";
 
 const words = [
   {
@@ -43,6 +44,8 @@ export default function Home() {
     <>
       <FloatingNav navItems={navItems} />
       <MacbookScroll></MacbookScroll>
+      <ProjectCards />
+      <PhotoSlide />
     </>
   );
 }

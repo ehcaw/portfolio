@@ -7,7 +7,7 @@ import {
   useTransform,
   useMotionValueEvent,
 } from "framer-motion";
-import { TypewriterEffect } from "./Typewriter";
+import { TypewriterEffect, SmallTypewriter } from "./Typewriter";
 import { cn } from "../utils/cn";
 import {
   IconBrightnessDown,
@@ -67,6 +67,20 @@ const words = [
   },
 ];
 
+const bunInstall = [
+  { text: "$" },
+  { text: "bun" },
+  { text: "install" },
+  { text: "ryan" },
+];
+
+const installing = [
+  { text: ">" },
+  {
+    text: "installing...",
+  },
+];
+const done = [{ text: ">" }, { text: "Done!" }];
 export const MacbookScroll = ({
   src,
   showGradient,
@@ -182,6 +196,17 @@ export const Lid = ({
   src?: string;
   flipCard?: boolean;
 }) => {
+  const [bun, setBun] = useState(false);
+  useEffect(() => {
+    if (flipCard) {
+      const animationDuration = 2000;
+
+      const timer = setTimeout(() => {
+        setBun(true);
+      }, animationDuration);
+      return () => clearTimeout(timer);
+    }
+  }, [flipCard]);
   return (
     <div className="relative [perspective:800px]">
       <div
@@ -225,15 +250,57 @@ export const Lid = ({
         )}
         {flipCard && (
           <div className="mockup-code object-cover object-left-top absolute rounded-lg inset-0 h-full w-full">
-            <pre data-prefix="$">
-              <code>bun install ryan</code>
+            <pre>
+              <code>
+                <SmallTypewriter words={bunInstall} className="text-sm" />
+              </code>
             </pre>
-            <pre data-prefix=">" className="text-yellow-500">
-              <code>installing...</code>
+            <pre>
+              <code>
+                <SmallTypewriter
+                  words={installing}
+                  className="text-sm text-yellow-500"
+                />
+              </code>
             </pre>
-            <pre data-prefix=">" className="text-green-500">
-              <code>Done!</code>
+            <pre>
+              <code>
+                <SmallTypewriter
+                  words={done}
+                  className="text-sm text-green-500"
+                />
+              </code>
             </pre>
+            {bun && (
+              <div className="text-xs p-1">
+                <pre data-prefix="//" className="py-4">
+                  <code>
+                    I am a second year computer science student at SJSU
+                  </code>
+                </pre>
+                <pre data-prefix="//" className="py-4">
+                  <code>
+                    I work mainly in Typescript(what this website is built in!)
+                  </code>
+                </pre>
+                <pre data-prefix="//" className="py-4">
+                  <code>
+                    However, I am proficient in Java and Python as well
+                  </code>
+                </pre>
+                <pre data-prefix="//" className="py-4">
+                  <code>
+                    As of current, I am interested in AI and full-stack
+                    development
+                  </code>
+                </pre>
+                <pre data-prefix="//" className="py-4">
+                  <code>
+                    Keep scrolling to see my projects and learn more about me!
+                  </code>
+                </pre>
+              </div>
+            )}
           </div>
         )}
       </motion.div>
