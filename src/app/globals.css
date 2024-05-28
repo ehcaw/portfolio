@@ -31,3 +31,9 @@ body {
     text-wrap: balance;
   }
 }
+pre[data-prefix]::before {
+  content: attr(data-prefix);
+  display: inline-block;
+  margin-right: 10px;
+  margin-left: 10px;
+}
