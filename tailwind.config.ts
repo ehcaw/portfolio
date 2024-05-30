@@ -31,11 +31,24 @@ module.exports = {
   darkMode: "class",
   theme: {
     // rest of the code
+    extend: {
+      animation: {
+        scroll:
+          "scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite",
+      },
+      keyframes: {
+        scroll: {
+          to: {
+            transform: "translate(calc(-50% - 0.5rem))",
+          },
+        },
+      },
+      plugins: [
+        // rest of the code
+        [addVariablesForColors],
+      ],
+    },
   },
-  plugins: [
-    // rest of the code
-    addVariablesForColors,
-  ],
 };
 
 // This plugin adds each Tailwind color as a global CSS variable, e.g. var(--gray-200).

@@ -21,6 +21,15 @@ const words = [
     text: "love",
   },
   {
+    text: "exploring",
+  },
+  {
+    text: "nature",
+  },
+  {
+    text: "and",
+  },
+  {
     text: "taking",
   },
   {
@@ -45,7 +54,7 @@ const words = [
 
 export const PhotoSlide = () => {
   return (
-    <div className="mockup-code p-3 h-64">
+    <div className="mockup-code p-3 h-32">
       <pre>
         <code>
           <MediumTypewriter words={words} className="text-med" />

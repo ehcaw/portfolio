@@ -9,7 +9,11 @@ import {
 import { cn } from "../utils/cn";
 import Link from "next/link";
 import Image from "next/image";
-import { IconMail } from "@tabler/icons-react";
+import {
+  LinkedInLogoIcon,
+  EnvelopeClosedIcon,
+  GitHubLogoIcon,
+} from "@radix-ui/react-icons";
 
 export const FloatingNav = ({
   navItems,
@@ -18,7 +22,7 @@ export const FloatingNav = ({
   navItems: {
     name: string;
     link: string;
-    icon?: string;
+    icon?: any;
   }[];
   className?: string;
 }) => {
@@ -70,14 +74,7 @@ export const FloatingNav = ({
               "relative dark:text-neutral-50 items-center flex space-x-1 text-white dark:hover:text-neutral-300 hover:text-neutral-500"
             )}
           >
-            {navItem.icon && (
-              <Image
-                src={navItem.icon}
-                alt={navItem.name}
-                width={24}
-                height={24}
-              />
-            )}
+            {navItem.icon}
             <span className="hidden sm:block text-sm text-white">
               {navItem.name}
             </span>
@@ -92,16 +89,16 @@ export const navItems = [
   {
     name: "email",
     link: "mailto:ryan.c.nguyen@sjsu.edu",
-    icon: "/gmail.png",
+    icon: <EnvelopeClosedIcon />,
   },
   {
     name: "linkedin",
     link: "https://www.linkedin.com/in/ryannguyenc",
-    icon: "/linkedin.webp",
+    icon: <LinkedInLogoIcon />,
   },
   {
     name: "github",
     link: "https://www.github.com/ehcaw",
-    icon: "/github.png",
+    icon: <GitHubLogoIcon />,
   },
 ];

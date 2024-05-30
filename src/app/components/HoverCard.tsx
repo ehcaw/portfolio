@@ -24,12 +24,13 @@ export const HoverEffect = ({
       )}
     >
       {items.map((item, idx) => (
-        <Link
+        <a
           href={item?.link}
           key={item?.link}
           className="relative group  block p-2 h-full w-full"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
+          target="_blank"
         >
           <AnimatePresence>
             {hoveredIndex === idx && (
@@ -52,7 +53,7 @@ export const HoverEffect = ({
             <CardTitle>{item.title}</CardTitle>
             <CardDescription>{item.description}</CardDescription>
           </Card>
-        </Link>
+        </a>
       ))}
     </div>
   );
@@ -112,27 +113,32 @@ export const CardDescription = ({
 
 const projects = [
   {
+    title: "F1 Project",
+    description: "data analysis and machine learning on Kaggle F1 dataset",
+    link: "https://github.com/ehcaw/f1-project",
+  },
+  {
     title: "colorme",
     description:
       "a firefox web extension that allows you to customize your browser's color theme, built using Typescript and React",
-    link: "github.com/ehcaw/colorme",
+    link: "https://github.com/ehcaw/colorme",
   },
   {
     title: "sign language recognition",
     description: "a sign language recognition system using OpenCV and Python",
-    link: "github.com/ehcaw/gesturerecognition",
+    link: "https://github.com/ehcaw/gesturerecognition",
   },
   {
     title: "NatureDex",
     description:
       "a Pokedex for real-life, built with Typescript, Next.js, and React",
-    link: "github.com/ehcaw/lahacks24",
+    link: "https://github.com/dannymang/lahacks24",
   },
   {
     title: "Elitecode",
     description:
       "interactive interview prep using Whisper, GPT, and elevenlabs, built with Typescript, Next.js, and React",
-    link: "github.com/ehcaw/sfhacks",
+    link: "https://github.com/ehcaw/sfhacks",
   },
   {
     title: "Purrfect Match",
@@ -144,12 +150,12 @@ const projects = [
     title: "CruzMaps",
     description:
       "revamped the UCSC campus map with a modern design, built with Typescript, Next.js, and React",
-    link: "github.com/vznh/cruzmaps",
+    link: "https://github.com/vznh/cruzmaps",
   },
   {
     title: "JTunes",
     description: "A fully offline music player app built with Java",
-    link: "github.com/ehcaw/jtunes",
+    link: "https://github.com/ehcaw/jtunes",
   },
 ];
 
