@@ -1,6 +1,6 @@
 import { cn } from "../utils/cn";
 import { AnimatePresence, motion } from "framer-motion";
-import Link from "next/link";
+
 import { useState } from "react";
 
 export const HoverEffect = ({
@@ -112,6 +112,13 @@ export const CardDescription = ({
 };
 
 const projects = [
+  {
+    title: "BouncyHouseFunBay",
+    description:
+      "built a full-stack web application for renting out bounce houses for a client,built with Typescript, Next.js, and React",
+    link: "https://github.com/ehcaw/bouncyhousefun",
+  },
+
   {
     title: "F1 Project",
     description: "data analysis and machine learning on Kaggle F1 dataset",

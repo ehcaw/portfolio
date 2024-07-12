@@ -9,6 +9,8 @@ import { Footer } from "./components/Footer";
 import { Document, Page, pdfjs } from "react-pdf";
 import { Analytics } from "@vercel/analytics/react";
 
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+
 const words = [
   {
     text: "Hi",
@@ -59,29 +61,13 @@ const imageUrls = [
 export default function Home() {
   return (
     <>
-      <Analytics></Analytics>
       <FloatingNav navItems={navItems} />
       <MacbookScroll></MacbookScroll>
-      <div>
-        <a
-          href="https://drive.google.com/file/d/1fUSLkUzSFJzildtDxrQhPVCr0Q3DYOaP/view"
-          rel="norefferer"
-          target="_blank"
-        >
-          <Document
-            file={{
-              data: "https://drive.google.com/file/d/1fUSLkUzSFJzildtDxrQhPVCr0Q3DYOaP/view",
-            }}
-            onLoadError={console.error}
-          >
-            <Page pageNumber={0} />
-          </Document>
-        </a>
-      </div>
       <ProjectCards />
       <PhotoSlide />
       <ScrollingImages items={imageUrls} direction="right" speed="slow" />
       <Footer />
+      <Analytics></Analytics>
     </>
   );
 }
