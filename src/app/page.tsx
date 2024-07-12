@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import React from "react";
 import { MacbookScroll } from "./components/MacbookScroll";
 import { FloatingNav, navItems } from "./components/Navbar";
@@ -7,6 +6,8 @@ import { ProjectCards } from "./components/HoverCard";
 import { PhotoSlide } from "./components/PhotoSlide";
 import { ScrollingImages } from "./components/ScrollingImages";
 import { Footer } from "./components/Footer";
+import { Document, Page, pdfjs } from "react-pdf";
+import { Analytics } from "@vercel/analytics/react";
 
 const words = [
   {
@@ -58,8 +59,25 @@ const imageUrls = [
 export default function Home() {
   return (
     <>
+      <Analytics></Analytics>
       <FloatingNav navItems={navItems} />
       <MacbookScroll></MacbookScroll>
+      <div>
+        <a
+          href="https://drive.google.com/file/d/1fUSLkUzSFJzildtDxrQhPVCr0Q3DYOaP/view"
+          rel="norefferer"
+          target="_blank"
+        >
+          <Document
+            file={{
+              data: "https://drive.google.com/file/d/1fUSLkUzSFJzildtDxrQhPVCr0Q3DYOaP/view",
+            }}
+            onLoadError={console.error}
+          >
+            <Page pageNumber={0} />
+          </Document>
+        </a>
+      </div>
       <ProjectCards />
       <PhotoSlide />
       <ScrollingImages items={imageUrls} direction="right" speed="slow" />
