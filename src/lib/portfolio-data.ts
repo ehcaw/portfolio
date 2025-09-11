@@ -18,17 +18,27 @@ export const portfolioData: FileNode = {
       name: "about.md",
       type: "file",
       icon: "📄",
-      content: `# About Me
+      content: `<div style="display: flex; gap: 2rem; align-items: flex-start; flex-wrap: wrap;">
+<div style="flex: 1; min-width: 300px;">
+
+# About Me
 
 Hi! My name is Ryan Nguyen (wache online) and I'm currently studying computer science at San Jose State University.
 
 I'm interested in startups, applied ai, ai augmentation as opposed to replacement, photography, and environmental impact.
 
+</div>
+<div style="flex: 0 0 200px;">
+
+<img src="/headshot.JPEG" alt="Ryan's Headshot" style="width: 200px; height: 200px; object-fit: cover; border-radius: 12px;" />
+
+</div>
+</div>
+
 ---
 
 ## Reach Out!
 I'm always interested in just chatting about new technologies, startups, or anything at all!
-
 
 - **Email**: [ryannguyenc@gmail.com](mailto:ryannguyenc@gmail.com)
 - **LinkedIn**: [linkedin.com/in/ryannguyenc](https://linkedin.com/in/ryannguyenc)
