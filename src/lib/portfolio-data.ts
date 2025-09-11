@@ -6,6 +6,7 @@ export interface FileNode {
   children?: FileNode[];
   icon?: string;
   images?: string[];
+  githubUrl?: string;
 }
 
 export const portfolioData: FileNode = {
@@ -26,7 +27,7 @@ export const portfolioData: FileNode = {
 
 Hi! My name is Ryan Nguyen (wache online) and I'm currently studying computer science at San Jose State University.
 
-I'm interested in startups, applied ai, ai augmentation as opposed to replacement, photography, and environmental impact.
+I'm interested in startups, ai augmentation as opposed to replacement, dev tools, photography, and environmental impact.
 
 </div>
 <div style="flex: 0 0 200px;">
@@ -171,6 +172,7 @@ A desktop note-taking app that does everything Notion does but with better AI fe
 ---
 
 *Building this to learn desktop development and because paying $10/month for notes feels ridiculous.*`,
+          githubUrl: "https://github.com/ehcaw/pointer",
         },
         {
           id: "project-4",
@@ -199,6 +201,7 @@ A bot that reviews pull requests and keeps context across reviews using persiste
 ---
 
 *Tried making a code review bot for club repos and this one actually learns.*`,
+          githubUrl: "https://github.com/ehcaw/toph-bot",
         },
         {
           id: "project-5",
@@ -231,6 +234,7 @@ A full Python development environment that runs in your browser with file persis
 
 *Sometimes you just want to code Python without setting up a whole environment.*`,
           images: ["/lsclear/lsclear.png"],
+          githubUrl: "https://github.com/ehcaw/lsclear",
         },
         {
           id: "project-6",
@@ -258,6 +262,7 @@ A TUI application that combines a chatbot with a simple code editor, all running
 
 *Sometimes the terminal is all you need - wanted to see how much I could fit into a TUI.*`,
           images: ["/shelly/shelly1.png", "/shelly/shelly2.png"],
+          githubUrl: "https://github.com/ehcaw/shelly",
         },
         {
           id: "project-7",
@@ -288,6 +293,7 @@ Index documentation from URLs or local files and then chat with them to find wha
 ---
 
 *Searching through documentation is painful - this makes it actually useful.*`,
+          githubUrl: "https://github.com/ehcaw/documix",
         },
         {
           id: "project-8",
@@ -316,6 +322,7 @@ Built this at HackDavis 2025 for team vibecoders - it reads your entire codebase
 
 *Documentation is always outdated - this keeps it current automatically.*`,
           images: ["/catdoc/catdoc1.png", "/catdoc/catdoc2.png"],
+          githubUrl: "https://github.com/ehcaw/catdoc",
         },
         {
           id: "project-9",
@@ -349,6 +356,7 @@ Built this at CalHacks AI 2025 - a voice assistant that remembers conversations 
             "/dashi/dashi2.png",
             "/dashi/dashi3.png",
           ],
+          githubUrl: "https://github.com/ehcaw/dashi",
         },
         {
           id: "project-10",
@@ -380,6 +388,7 @@ A debugging tool that reads your trace logs, runs your files, and suggests actua
             "/splat/splat2.png",
             "/splat/splat3.png",
           ],
+          githubUrl: "https://github.com/ehcaw/splat",
         },
         {
           id: "project-11",
@@ -408,6 +417,7 @@ Built this at SFHacks 2023 - practice explaining coding concepts out loud with A
 ---
 
 *Coding interviews are hard enough without fumbling through explanations - this helps you practice the talking part.*`,
+          githubUrl: "https://github.com/ehcaw/sfhacks",
         },
       ],
     },

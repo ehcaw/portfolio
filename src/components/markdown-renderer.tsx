@@ -7,12 +7,14 @@ interface MarkdownRendererProps {
   content: string;
   images?: string[];
   projectName?: string;
+  githubUrl?: string;
 }
 
 export function MarkdownRenderer({
   content,
   images,
   projectName,
+  githubUrl,
 }: MarkdownRendererProps) {
   const htmlContent = useMemo(() => {
     // Simple markdown parser - you can replace this with a more robust solution like react-markdown
@@ -26,10 +28,12 @@ export function MarkdownRenderer({
         /^## (.*$)/gim,
         '<h2 class="text-xl font-semibold mt-8 mb-4">$1</h2>',
       )
-      .replace(
-        /^# (.*$)/gim,
-        '<h1 class="text-2xl font-bold mt-8 mb-6">$1</h1>',
-      )
+      .replace(/^# (.*$)/gim, (match, title) => {
+        if (githubUrl) {
+          return `<h1 class="text-2xl font-bold mt-8 mb-6">${title} - <a href="${githubUrl}" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline font-medium" target="_blank" rel="noopener noreferrer">github</a></h1>`;
+        }
+        return `<h1 class="text-2xl font-bold mt-8 mb-6">${title}</h1>`;
+      })
 
       // Bold and italic
       .replace(/\*\*(.*?)\*\*/g, '<strong class="font-semibold">$1</strong>')
@@ -82,7 +86,7 @@ export function MarkdownRenderer({
     }
 
     return html;
-  }, [content]);
+  }, [content, githubUrl]);
 
   // Split content to inject images before final thoughts
   const shouldShowImages = images && images.length > 0;

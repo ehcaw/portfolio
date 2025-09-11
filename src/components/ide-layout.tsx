@@ -202,6 +202,7 @@ export function IDELayout() {
                 content={activeContent}
                 images={activeFileNode?.images}
                 projectName={activeFileNode?.name?.replace(".md", "")}
+                githubUrl={activeFileNode?.githubUrl}
               />
             </div>
           </div>
