@@ -5,6 +5,7 @@ export interface FileNode {
   content?: string;
   children?: FileNode[];
   icon?: string;
+  images?: string[];
 }
 
 export const portfolioData: FileNode = {
@@ -197,7 +198,7 @@ A bot that reviews pull requests and keeps context across reviews using persiste
 
 ---
 
-*Tired of code review bots that forget everything between reviews - this one actually learns.*`,
+*Tried making a code review bot for club repos and this one actually learns.*`,
         },
         {
           id: "project-5",
@@ -229,6 +230,7 @@ A full Python development environment that runs in your browser with file persis
 ---
 
 *Sometimes you just want to code Python without setting up a whole environment.*`,
+          images: ["/lsclear/lsclear.png"],
         },
         {
           id: "project-6",
@@ -255,6 +257,7 @@ A TUI application that combines a chatbot with a simple code editor, all running
 ---
 
 *Sometimes the terminal is all you need - wanted to see how much I could fit into a TUI.*`,
+          images: ["/shelly/shelly1.png", "/shelly/shelly2.png"],
         },
         {
           id: "project-7",
@@ -306,12 +309,13 @@ Built this at HackDavis 2025 for team vibecoders - it reads your entire codebase
 
 ## What I Used
 - Ink React
-- Gemini 2.5
+- Gemini 2.5 pro
 - File hashing for change detection
 
 ---
 
 *Documentation is always outdated - this keeps it current automatically.*`,
+          images: ["/catdoc/catdoc1.png", "/catdoc/catdoc2.png"],
         },
         {
           id: "project-9",
@@ -335,10 +339,16 @@ Built this at CalHacks AI 2025 - a voice assistant that remembers conversations 
 - Letta
 - Groq Whisper
 - Tauri
+- MCPs (Exa, etc.)
 
 ---
 
 *Siri forgets everything immediately - this one actually learns from our conversations.*`,
+          images: [
+            "/dashi/dashi1.png",
+            "/dashi/dashi2.png",
+            "/dashi/dashi3.png",
+          ],
         },
         {
           id: "project-10",
@@ -360,12 +370,16 @@ A debugging tool that reads your trace logs, runs your files, and suggests actua
 
 ## What I Used
 - Python CLI frameworks
-- Code analysis tools
-- AI for edit suggestions
+- Groq for bug analyis and FetchAI for edit suggestions
 
 ---
 
 *Debugging is tedious - wanted something that could suggest actual fixes instead of just finding problems.*`,
+          images: [
+            "/splat/splat1.png",
+            "/splat/splat2.png",
+            "/splat/splat3.png",
+          ],
         },
         {
           id: "project-11",

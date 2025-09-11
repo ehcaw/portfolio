@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { FileTree } from "./file-tree";
 import { MarkdownRenderer } from "./markdown-renderer";
-import { portfolioData } from "@/lib/portfolio-data";
+import { portfolioData, FileNode } from "@/lib/portfolio-data";
 import { Button } from "@/components/ui/button";
 import { Moon, Sun, Github, Mail, X } from "lucide-react";
 
@@ -64,7 +64,7 @@ export function IDELayout() {
   };
 
   const getFileNameById = (fileId: string): string => {
-    const findFile = (node: any): string => {
+    const findFile = (node: FileNode): string => {
       if (node.id === fileId) return node.name;
       if (node.children) {
         for (const child of node.children) {
@@ -77,8 +77,23 @@ export function IDELayout() {
     return findFile(portfolioData) || "untitled";
   };
 
+  const getFileNodeById = (fileId: string): FileNode | null => {
+    const findFile = (node: FileNode): FileNode | null => {
+      if (node.id === fileId) return node;
+      if (node.children) {
+        for (const child of node.children) {
+          const result = findFile(child);
+          if (result) return result;
+        }
+      }
+      return null;
+    };
+    return findFile(portfolioData);
+  };
+
   const activeTab = tabs.find((tab) => tab.id === activeTabId);
   const activeContent = activeTab?.content || "";
+  const activeFileNode = activeTab ? getFileNodeById(activeTab.id) : null;
 
   return (
     <div className="h-screen flex flex-col bg-background">
@@ -183,7 +198,11 @@ export function IDELayout() {
           {/* Content Area */}
           <div className="flex-1 overflow-y-auto p-8 bg-background">
             <div className="max-w-4xl mx-auto">
-              <MarkdownRenderer content={activeContent} />
+              <MarkdownRenderer
+                content={activeContent}
+                images={activeFileNode?.images}
+                projectName={activeFileNode?.name?.replace(".md", "")}
+              />
             </div>
           </div>
         </div>

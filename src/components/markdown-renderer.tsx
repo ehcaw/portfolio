@@ -1,12 +1,19 @@
 "use client";
 
 import { useMemo } from "react";
+import { ProjectImages } from "./project-images";
 
 interface MarkdownRendererProps {
   content: string;
+  images?: string[];
+  projectName?: string;
 }
 
-export function MarkdownRenderer({ content }: MarkdownRendererProps) {
+export function MarkdownRenderer({
+  content,
+  images,
+  projectName,
+}: MarkdownRendererProps) {
   const htmlContent = useMemo(() => {
     // Simple markdown parser - you can replace this with a more robust solution like react-markdown
     let html = content
@@ -76,6 +83,37 @@ export function MarkdownRenderer({ content }: MarkdownRendererProps) {
 
     return html;
   }, [content]);
+
+  // Split content to inject images before final thoughts
+  const shouldShowImages = images && images.length > 0;
+
+  if (shouldShowImages) {
+    // Look for the last horizontal rule followed by italicized text
+    const hrPattern = /<hr[^>]*>/g;
+    const matches = [...htmlContent.matchAll(hrPattern)];
+
+    if (matches.length > 0) {
+      const lastHrMatch = matches[matches.length - 1];
+      const beforeImages = htmlContent.substring(0, lastHrMatch.index);
+      const afterImages = htmlContent.substring(lastHrMatch.index!);
+
+      return (
+        <div className="prose prose-sm max-w-none">
+          <div dangerouslySetInnerHTML={{ __html: beforeImages }} />
+          <ProjectImages images={images} projectName={projectName} />
+          <div dangerouslySetInnerHTML={{ __html: afterImages }} />
+        </div>
+      );
+    }
+
+    // Fallback: if no HR found, add images at the end
+    return (
+      <div className="prose prose-sm max-w-none">
+        <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+        <ProjectImages images={images} projectName={projectName} />
+      </div>
+    );
+  }
 
   return (
     <div
