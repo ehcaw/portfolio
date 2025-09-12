@@ -5,7 +5,7 @@ import { FileTree } from "./file-tree";
 import { MarkdownRenderer } from "./markdown-renderer";
 import { portfolioData, FileNode } from "@/lib/portfolio-data";
 import { Button } from "@/components/ui/button";
-import { Moon, Sun, Github, Mail, X } from "lucide-react";
+import { Moon, Sun, Github, Mail, X, Menu } from "lucide-react";
 
 interface Tab {
   id: string;
@@ -25,6 +25,7 @@ export function IDELayout() {
   ]);
   const [activeTabId, setActiveTabId] = useState<string>("about");
   const [isDark, setIsDark] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleFileSelect = (fileId: string, content: string) => {
     // Check if tab already exists
@@ -98,19 +99,27 @@ export function IDELayout() {
   return (
     <div className="h-screen flex flex-col bg-background">
       {/* Top Bar */}
-      <div className="h-12 bg-sidebar border-b border-sidebar-border flex items-center justify-between px-4">
+      <div className="h-12 bg-sidebar border-b border-sidebar-border flex items-center justify-between px-2 md:px-4">
         <div className="flex items-center gap-2">
           <div className="flex gap-1">
             <div className="w-3 h-3 rounded-full bg-red-500"></div>
             <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
             <div className="w-3 h-3 rounded-full bg-green-500"></div>
           </div>
-          <span className="text-sm font-mono text-sidebar-foreground ml-4">
+          <span className="text-xs md:text-sm font-mono text-sidebar-foreground ml-2 md:ml-4">
             wache
           </span>
         </div>
 
         <div className="flex items-center gap-2">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="h-8 w-8 p-0 md:hidden"
+          >
+            <Menu className="h-4 w-4" />
+          </Button>
           <Button
             variant="ghost"
             size="sm"
@@ -145,8 +154,16 @@ export function IDELayout() {
       </div>
 
       <div className="flex flex-1 overflow-hidden">
+        {/* Mobile Sidebar Overlay */}
+        {sidebarOpen && (
+          <div
+            className="fixed inset-0 bg-black/50 z-40 md:hidden"
+            onClick={() => setSidebarOpen(false)}
+          />
+        )}
+
         {/* Sidebar */}
-        <div className="w-80 bg-sidebar border-r border-sidebar-border flex flex-col">
+        <div className={`w-80 bg-sidebar border-r border-sidebar-border flex flex-col fixed md:relative z-50 md:z-auto h-full md:h-auto transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 transition-transform duration-200 ease-in-out`}>
           <div className="p-3 border-b border-sidebar-border">
             <h2 className="text-sm font-semibold text-sidebar-foreground">
               FILE EXPLORER
@@ -164,8 +181,8 @@ export function IDELayout() {
         {/* Main Content */}
         <div className="flex-1 flex flex-col">
           {/* Tab Bar */}
-          <div className="h-10 bg-card border-b border-border flex items-center px-4 overflow-x-auto">
-            <div className="flex items-center gap-1">
+          <div className="h-10 bg-card border-b border-border flex items-center px-2 md:px-4 overflow-x-auto">
+            <div className="flex items-center gap-1 min-w-0">
               {tabs.map((tab) => (
                 <div
                   key={tab.id}
@@ -176,7 +193,7 @@ export function IDELayout() {
                   }`}
                   onClick={() => setActiveTabId(tab.id)}
                 >
-                  <span className="text-sm font-mono truncate max-w-[150px]">
+                  <span className="text-xs md:text-sm font-mono truncate max-w-[120px] md:max-w-[150px]">
                     {tab.name}
                   </span>
                   {tabs.length > 1 && (
@@ -196,8 +213,8 @@ export function IDELayout() {
           </div>
 
           {/* Content Area */}
-          <div className="flex-1 overflow-y-auto p-8 bg-background">
-            <div className="max-w-4xl mx-auto">
+          <div className="flex-1 overflow-y-auto p-4 md:p-8 bg-background">
+            <div className="max-w-none md:max-w-4xl mx-auto">
               <MarkdownRenderer
                 content={activeContent}
                 images={activeFileNode?.images}
