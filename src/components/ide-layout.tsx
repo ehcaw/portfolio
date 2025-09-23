@@ -99,24 +99,24 @@ export function IDELayout() {
   return (
     <div className="h-screen flex flex-col bg-background">
       {/* Top Bar */}
-      <div className="h-12 bg-sidebar border-b border-sidebar-border flex items-center justify-between px-2 md:px-4">
-        <div className="flex items-center gap-2">
-          <div className="flex gap-1">
+      <div className="h-12 bg-sidebar border-b border-sidebar-border flex items-center justify-between px-3 md:px-4 shrink-0">
+        <div className="flex items-center gap-2 min-w-0">
+          <div className="flex gap-1 shrink-0">
             <div className="w-3 h-3 rounded-full bg-red-500"></div>
             <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
             <div className="w-3 h-3 rounded-full bg-green-500"></div>
           </div>
-          <span className="text-xs md:text-sm font-mono text-sidebar-foreground ml-2 md:ml-4">
+          <span className="text-xs md:text-sm font-mono text-sidebar-foreground ml-2 md:ml-4 truncate">
             wache
           </span>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 md:gap-2 shrink-0">
           <Button
             variant="ghost"
             size="sm"
             onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="h-8 w-8 p-0 md:hidden"
+            className="h-8 w-8 p-0 md:hidden shrink-0"
           >
             <Menu className="h-4 w-4" />
           </Button>
@@ -124,9 +124,9 @@ export function IDELayout() {
             variant="ghost"
             size="sm"
             onClick={() => window.open("https://github.com", "_blank")}
-            className="h-8 w-8 p-0"
+            className="h-7 w-7 md:h-8 md:w-8 p-0 shrink-0"
           >
-            <Github className="h-4 w-4" />
+            <Github className="h-3 w-3 md:h-4 md:w-4" />
           </Button>
           <Button
             variant="ghost"
@@ -134,20 +134,20 @@ export function IDELayout() {
             onClick={() =>
               window.open("mailto:ryannguyenc@gmail.com", "_blank")
             }
-            className="h-8 w-8 p-0"
+            className="h-7 w-7 md:h-8 md:w-8 p-0 shrink-0"
           >
-            <Mail className="h-4 w-4" />
+            <Mail className="h-3 w-3 md:h-4 md:w-4" />
           </Button>
           <Button
             variant="ghost"
             size="sm"
             onClick={toggleTheme}
-            className="h-8 w-8 p-0"
+            className="h-7 w-7 md:h-8 md:w-8 p-0 shrink-0"
           >
             {isDark ? (
-              <Sun className="h-4 w-4" />
+              <Sun className="h-3 w-3 md:h-4 md:w-4" />
             ) : (
-              <Moon className="h-4 w-4" />
+              <Moon className="h-3 w-3 md:h-4 md:w-4" />
             )}
           </Button>
         </div>
@@ -163,7 +163,9 @@ export function IDELayout() {
         )}
 
         {/* Sidebar */}
-        <div className={`w-80 bg-sidebar border-r border-sidebar-border flex flex-col fixed md:relative z-50 md:z-auto h-full md:h-auto transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:translate-x-0 transition-transform duration-200 ease-in-out`}>
+        <div
+          className={`w-80 bg-sidebar border-r border-sidebar-border flex flex-col fixed md:relative z-50 md:z-auto h-full md:h-auto transform ${sidebarOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0 transition-transform duration-200 ease-in-out`}
+        >
           <div className="p-3 border-b border-sidebar-border">
             <h2 className="text-sm font-semibold text-sidebar-foreground">
               FILE EXPLORER
@@ -179,21 +181,21 @@ export function IDELayout() {
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 flex flex-col">
+        <div className="flex-1 flex flex-col min-w-0">
           {/* Tab Bar */}
-          <div className="h-10 bg-card border-b border-border flex items-center px-2 md:px-4 overflow-x-auto">
-            <div className="flex items-center gap-1 min-w-0">
+          <div className="h-10 bg-card border-b border-border flex items-center overflow-x-auto scrollbar-hide">
+            <div className="flex items-center gap-1 px-2 md:px-4">
               {tabs.map((tab) => (
                 <div
                   key={tab.id}
-                  className={`flex items-center gap-2 px-3 py-1 border-t border-l border-r border-border cursor-pointer group ${
+                  className={`flex items-center gap-2 px-3 py-1 border-t border-l border-r border-border cursor-pointer group whitespace-nowrap flex-shrink-0 ${
                     activeTabId === tab.id
                       ? "bg-background border-b-background"
                       : "bg-card border-b-border hover:bg-background/50"
                   }`}
                   onClick={() => setActiveTabId(tab.id)}
                 >
-                  <span className="text-xs md:text-sm font-mono truncate max-w-[120px] md:max-w-[150px]">
+                  <span className="text-xs md:text-sm font-mono">
                     {tab.name}
                   </span>
                   {tabs.length > 1 && (
@@ -202,7 +204,7 @@ export function IDELayout() {
                         e.stopPropagation();
                         closeTab(tab.id);
                       }}
-                      className="opacity-0 group-hover:opacity-100 hover:bg-red-500/20 rounded p-0.5 transition-all"
+                      className="opacity-0 group-hover:opacity-100 hover:bg-red-500/20 rounded p-0.5 transition-all flex-shrink-0"
                     >
                       <X className="h-3 w-3" />
                     </button>
@@ -213,14 +215,16 @@ export function IDELayout() {
           </div>
 
           {/* Content Area */}
-          <div className="flex-1 overflow-y-auto p-4 md:p-8 bg-background">
-            <div className="max-w-none md:max-w-4xl mx-auto">
-              <MarkdownRenderer
-                content={activeContent}
-                images={activeFileNode?.images}
-                projectName={activeFileNode?.name?.replace(".md", "")}
-                githubUrl={activeFileNode?.githubUrl}
-              />
+          <div className="flex-1 overflow-y-auto bg-background">
+            <div className="w-full px-4 py-8 pb-16 md:px-8 md:py-8 md:pb-8">
+              <div className="w-full max-w-[calc(100vw-2rem)] md:max-w-4xl mx-auto">
+                <MarkdownRenderer
+                  content={activeContent}
+                  images={activeFileNode?.images}
+                  projectName={activeFileNode?.name?.replace(".md", "")}
+                  githubUrl={activeFileNode?.githubUrl}
+                />
+              </div>
             </div>
           </div>
         </div>

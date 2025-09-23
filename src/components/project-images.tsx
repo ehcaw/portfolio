@@ -34,14 +34,16 @@ export function ProjectImages({ images, projectName }: ProjectImagesProps) {
 
   return (
     <>
-      <div className="my-8">
-        <div className={`grid gap-4 ${getGridClass(images.length)}`}>
+      <div className="my-6 md:my-8 w-full">
+        <div
+          className={`grid gap-2 md:gap-4 ${getGridClass(images.length)} w-full`}
+        >
           {images.map((imageSrc, index) => {
             const altText = `${projectName || "Project"} screenshot ${index + 1}`;
             return (
               <div
                 key={index}
-                className="relative overflow-hidden rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow duration-200 cursor-pointer"
+                className="relative overflow-hidden rounded-lg border border-border shadow-sm hover:shadow-md transition-shadow duration-200 cursor-pointer w-full"
                 onClick={() => setModalImage({ src: imageSrc, alt: altText })}
               >
                 <Image
@@ -49,7 +51,8 @@ export function ProjectImages({ images, projectName }: ProjectImagesProps) {
                   alt={altText}
                   width={600}
                   height={400}
-                  className="w-full h-auto object-cover hover:scale-105 transition-transform duration-200"
+                  className="w-full h-auto object-cover hover:scale-105 transition-transform duration-200 max-w-full"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
             );

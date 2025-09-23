@@ -22,17 +22,17 @@ export function MarkdownRenderer({
       // Headers
       .replace(
         /^### (.*$)/gim,
-        '<h3 class="text-base md:text-lg font-semibold mt-4 md:mt-6 mb-2 md:mb-3">$1</h3>',
+        '<h3 class="text-base md:text-lg font-semibold mt-4 md:mt-6 mb-2 md:mb-3 leading-tight break-words">$1</h3>',
       )
       .replace(
         /^## (.*$)/gim,
-        '<h2 class="text-lg md:text-xl font-semibold mt-6 md:mt-8 mb-3 md:mb-4">$1</h2>',
+        '<h2 class="text-lg md:text-xl font-semibold mt-6 md:mt-8 mb-3 md:mb-4 leading-tight break-words">$1</h2>',
       )
       .replace(/^# (.*$)/gim, (match, title) => {
         if (githubUrl) {
-          return `<h1 class="text-xl md:text-2xl font-bold mt-6 md:mt-8 mb-4 md:mb-6">${title} - <a href="${githubUrl}" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline font-medium" target="_blank" rel="noopener noreferrer">github</a></h1>`;
+          return `<h1 class="text-xl md:text-2xl font-bold mt-6 md:mt-8 mb-4 md:mb-6 leading-tight break-words">${title} - <a href="${githubUrl}" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline font-medium break-words" target="_blank" rel="noopener noreferrer">github</a></h1>`;
         }
-        return `<h1 class="text-xl md:text-2xl font-bold mt-6 md:mt-8 mb-4 md:mb-6">${title}</h1>`;
+        return `<h1 class="text-xl md:text-2xl font-bold mt-6 md:mt-8 mb-4 md:mb-6 leading-tight break-words">${title}</h1>`;
       })
 
       // Bold and italic
@@ -42,25 +42,25 @@ export function MarkdownRenderer({
       // Code blocks
       .replace(/```[\s\S]*?```/g, (match) => {
         const code = match.slice(3, -3).trim();
-        return `<pre class="bg-muted p-3 md:p-4 rounded-lg overflow-x-auto my-3 md:my-4 text-xs md:text-sm"><code class="font-mono">${code}</code></pre>`;
+        return `<pre class="bg-muted p-2 md:p-4 rounded-lg overflow-x-auto my-3 md:my-4 text-xs md:text-sm max-w-full"><code class="font-mono whitespace-pre">${code}</code></pre>`;
       })
 
       // Inline code
       .replace(
         /`([^`]+)`/g,
-        '<code class="bg-muted px-1 py-0.5 rounded text-xs md:text-sm font-mono">$1</code>',
+        '<code class="bg-muted px-1 py-0.5 rounded text-xs md:text-sm font-mono break-all">$1</code>',
       )
 
       // Images
       .replace(
         /!\[([^\]]*)\]\(([^)]+)\)/g,
-        '<img src="$2" alt="$1" class="max-w-full h-auto rounded-lg my-3 md:my-4 mx-auto block" loading="lazy" />',
+        '<img src="$2" alt="$1" class="w-full max-w-full h-auto rounded-lg my-3 md:my-4 mx-auto block" loading="lazy" />',
       )
 
       // Links
       .replace(
         /\[([^\]]+)\]\(([^)]+)\)/g,
-        '<a href="$2" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline font-medium" target="_blank" rel="noopener noreferrer">$1</a>',
+        '<a href="$2" class="text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 underline font-medium break-words" target="_blank" rel="noopener noreferrer">$1</a>',
       )
 
       // Lists
@@ -74,15 +74,19 @@ export function MarkdownRenderer({
       .replace(/^---$/gim, '<hr class="border-border my-4 md:my-6" />')
 
       // Paragraphs
-      .replace(/\n\n/g, '</p><p class="mb-3 md:mb-4">')
+      .replace(
+        /\n\n/g,
+        '</p><p class="mb-3 md:mb-4 leading-relaxed break-words">',
+      )
       .replace(
         /^\*([^*].*)\*$/gim,
-        '<p class="text-muted-foreground italic text-center my-4 md:my-6">$1</p>',
+        '<p class="text-muted-foreground italic text-center my-4 md:my-6 leading-relaxed break-words">$1</p>',
       );
 
     // Wrap in paragraph tags
     if (!html.startsWith("<")) {
-      html = '<p class="mb-3 md:mb-4">' + html + "</p>";
+      html =
+        '<p class="mb-3 md:mb-4 leading-relaxed break-words">' + html + "</p>";
     }
 
     return html;
@@ -102,7 +106,7 @@ export function MarkdownRenderer({
       const afterImages = htmlContent.substring(lastHrMatch.index!);
 
       return (
-        <div className="prose prose-xs md:prose-sm max-w-none">
+        <div className="prose prose-xs md:prose-sm max-w-none overflow-hidden no-hyphens">
           <div dangerouslySetInnerHTML={{ __html: beforeImages }} />
           <ProjectImages images={images} projectName={projectName} />
           <div dangerouslySetInnerHTML={{ __html: afterImages }} />
@@ -112,7 +116,7 @@ export function MarkdownRenderer({
 
     // Fallback: if no HR found, add images at the end
     return (
-      <div className="prose prose-xs md:prose-sm max-w-none">
+      <div className="prose prose-xs md:prose-sm max-w-none overflow-hidden no-hyphens">
         <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
         <ProjectImages images={images} projectName={projectName} />
       </div>
@@ -121,7 +125,7 @@ export function MarkdownRenderer({
 
   return (
     <div
-      className="prose prose-xs md:prose-sm max-w-none"
+      className="prose prose-xs md:prose-sm max-w-none overflow-hidden no-hyphens"
       dangerouslySetInnerHTML={{ __html: htmlContent }}
     />
   );
