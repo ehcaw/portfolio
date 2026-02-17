@@ -458,14 +458,14 @@ A personal finance tracker that lets you scan screenshots from your bank account
 A finance tracker that uses AI vision to parse screenshots of bank statements, credit card apps, and investment accounts — so I can stay on top of my finances without manual data entry.
 
 ## How I'm Building It
-- Using Claude's vision API to extract transaction data from screenshots
+- Using OpenAI's vision API to extract transaction data from screenshots
 - Built a clean dashboard for viewing spending trends and account balances
 - Auto-categorizes transactions based on merchant names
 - Tracks spending over time with charts and breakdowns
 
 ## What I'm Using
 - Next.js, React, TypeScript, Tailwind CSS
-- Claude API (vision for screenshot parsing)
+- OpenAI API (vision for screenshot parsing)
 - Recharts (data visualization)
 
 ---
