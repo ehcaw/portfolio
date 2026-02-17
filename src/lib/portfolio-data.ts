@@ -419,6 +419,34 @@ Built this at SFHacks 2023 - practice explaining coding concepts out loud with A
 *Coding interviews are hard enough without fumbling through explanations - this helps you practice the talking part.*`,
           githubUrl: "https://github.com/ehcaw/sfhacks",
         },
+        {
+          id: "project-delta",
+          name: "delta.md",
+          type: "file",
+          icon: "💰",
+          content: `# Delta
+
+A personal finance tracker that lets you scan screenshots from your bank accounts and automatically logs transactions.
+
+## What I'm Building
+A finance tracker that uses AI vision to parse screenshots of bank statements, credit card apps, and investment accounts — so I can stay on top of my finances without manual data entry.
+
+## How I'm Building It
+- Using Claude's vision API to extract transaction data from screenshots
+- Built a clean dashboard for viewing spending trends and account balances
+- Auto-categorizes transactions based on merchant names
+- Tracks spending over time with charts and breakdowns
+
+## What I'm Using
+- Next.js, React, TypeScript, Tailwind CSS
+- Claude API (vision for screenshot parsing)
+- Recharts (data visualization)
+
+---
+
+*Manually logging expenses is tedious — just screenshot your accounts and let AI do the rest.*`,
+          githubUrl: "https://github.com/ehcaw/delta",
+        },
       ],
     },
   ],
