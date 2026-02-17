@@ -59,6 +59,32 @@ I'm always interested in just chatting about new technologies, startups, or anyt
       icon: "💼",
       children: [
         {
+          id: "mintlify-backend-ai-eng",
+          name: "backend-ai-eng @ mintlify.md",
+          type: "file",
+          icon: "🍃",
+          content: `# Backend AI Engineer
+**Mintlify** | *2025 - Present*
+
+## What I Do
+Work across the product as a backend AI engineer, building and shipping core product features and new AI capabilities.
+
+## How I Do It
+- Build and maintain backend services that power Mintlify's documentation platform
+- Develop new AI features that enhance how users create and interact with documentation
+- Work across the full product surface, contributing to both existing features and greenfield AI projects
+- Collaborate with the team to ship AI-powered tools that make documentation smarter and more useful
+
+## What I Use
+- Python, TypeScript
+- AI/ML frameworks and LLM integrations
+- Backend infrastructure and APIs
+
+---
+
+*Working at a dev tools startup has been an incredible experience — shipping fast, wearing many hats, and building AI features that developers actually use every day.*`,
+        },
+        {
           id: "amazon-sde-intern",
           name: "sde-intern @ amazon.md",
           type: "file",
