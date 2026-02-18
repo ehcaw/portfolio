@@ -76,7 +76,7 @@ Work across the product as a backend AI engineer, building and shipping core pro
 - Collaborate with the team to ship AI-powered tools that make documentation smarter and more useful
 
 ## What I Use
-- TypeScript
+- TypeScript, Go
 - AI/ML frameworks and LLM integrations
 - Backend infrastructure and APIs
 
