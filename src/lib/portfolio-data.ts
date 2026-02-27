@@ -71,7 +71,7 @@ Work across the product as a backend AI engineer, building and shipping core pro
 
 ## How I Do It
 - Build and maintain backend services that power Mintlify's documentation platform
-- Develop new AI features that enhance how users create and interact with documentation
+- Develop new AI features that enhance how users create, interact with, and maintain documentation
 - Work across the full product surface, contributing to both existing features and greenfield AI projects
 - Collaborate with the team to ship AI-powered tools that make documentation smarter and more useful
 
