@@ -77,6 +77,7 @@ Work across the product as a backend AI engineer, building and shipping core pro
 
 ## What I Use
 - TypeScript
+- Claude Code/
 - AI frameworks and LLM integrations
 - Backend infrastructure and APIs
 
