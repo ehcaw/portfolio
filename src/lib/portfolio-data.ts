@@ -210,32 +210,6 @@ A desktop note-taking app that does everything Notion does but with better AI fe
 
 An integrated GitHub PR review bot that actually remembers what it's looking at.
 
-## What I'm Building
-A bot that reviews pull requests and keeps context across reviews using persistent memory, instead of starting fresh every time like other bots.
-
-## How I'm Building It
-- Using Letta for memory management so the bot remembers previous conversations
-- Built FastAPI webhooks to handle GitHub events
-- Planning to add HelixDB for storing and searching through codebase information
-- Setting up RAG for better code understanding
-
-## What I'm Using
-- Letta (memory)
-- FastAPI
-- GitHub webhooks
-- HelixDB (planned)
-
----
-
-*Tried making a code review bot for club repos and this one actually learns.*`,
-          githubUrl: "https://github.com/ehcaw/toph-bot",
-        },
-        {
-          id: "project-5",
-          name: "lsclear.md",
-          type: "file",
-          icon: "💻",
-          content: `# LSClear
 
 A web-based Python IDE because sometimes you just need to code without installing anything.
 
