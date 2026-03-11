@@ -25,7 +25,7 @@ export const portfolioData: FileNode = {
 
 # About Me
 
-Hi! My name is Ryan Nguyen (wache online) and I'm currently a software engineer at Mintlify!
+Hi! My name is Ryan Nguyen (wache online) and I'm currently a software engineer at Mintlify! I recently graduated from SJSU.
 
 I'm interested in startups, ai augmentation as opposed to replacement, dev tools, photography, and environmental impact.
 
@@ -202,14 +202,11 @@ A desktop note-taking app that does everything Notion does but with better AI fe
           githubUrl: "https://github.com/ehcaw/pointer",
         },
         {
-          id: "project-4",
-          name: "toph-bot.md",
+          id: "project-5",
+          name: "lsclear.md",
           type: "file",
-          icon: "🤖",
-          content: `# Toph Bot
-
-An integrated GitHub PR review bot that actually remembers what it's looking at.
-
+          icon: "💻",
+          content: `# LSClear
 
 A web-based Python IDE because sometimes you just need to code without installing anything.
 
