@@ -25,7 +25,7 @@ export const portfolioData: FileNode = {
 
 # About Me
 
-Hi! My name is Ryan Nguyen (wache online) and I'm currently a software engineer at Mintlify! I recently graduated from SJSU.
+Hi! My name is Ryan Nguyen (wache online) and I'm currently studying computer science at San Jose State University.
 
 I'm interested in startups, ai augmentation as opposed to replacement, dev tools, photography, and environmental impact.
 
@@ -200,6 +200,35 @@ A desktop note-taking app that does everything Notion does but with better AI fe
 
 *Building this to learn desktop development and because paying $10/month for notes feels ridiculous.*`,
           githubUrl: "https://github.com/ehcaw/pointer",
+        },
+        {
+          id: "project-4",
+          name: "toph-bot.md",
+          type: "file",
+          icon: "🤖",
+          content: `# Toph Bot
+
+An integrated GitHub PR review bot that actually remembers what it's looking at.
+
+## What I'm Building
+A bot that reviews pull requests and keeps context across reviews using persistent memory, instead of starting fresh every time like other bots.
+
+## How I'm Building It
+- Using Letta for memory management so the bot remembers previous conversations
+- Built FastAPI webhooks to handle GitHub events
+- Planning to add HelixDB for storing and searching through codebase information
+- Setting up RAG for better code understanding
+
+## What I'm Using
+- Letta (memory)
+- FastAPI
+- GitHub webhooks
+- HelixDB (planned)
+
+---
+
+*Tried making a code review bot for club repos and this one actually learns.*`,
+          githubUrl: "https://github.com/ehcaw/toph-bot",
         },
         {
           id: "project-5",
@@ -421,4 +450,3 @@ Built this at SFHacks 2023 - practice explaining coding concepts out loud with A
     },
   ],
 };
-//test
