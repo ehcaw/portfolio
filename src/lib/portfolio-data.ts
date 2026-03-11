@@ -25,7 +25,7 @@ export const portfolioData: FileNode = {
 
 # About Me
 
-Hi! My name is Ryan Nguyen (wache online) and I'm currently studying computer science at San Jose State University.
+Hi! My name is Ryan Nguyen (wache online) and I'm currently a software engineer at Mintlify! I recently graduated from San Jose State University.
 
 I'm interested in startups, ai augmentation as opposed to replacement, dev tools, photography, and environmental impact.
 
