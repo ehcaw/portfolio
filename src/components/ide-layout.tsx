@@ -123,7 +123,7 @@ export function IDELayout() {
           <Button
             variant="ghost"
             size="sm"
-            onClick={() => window.open("https://github.com", "_blank")}
+            onClick={() => window.open("https://github.com/ehcaw", "_blank")}
             className="h-7 w-7 md:h-8 md:w-8 p-0 shrink-0"
           >
             <Github className="h-3 w-3 md:h-4 md:w-4" />
